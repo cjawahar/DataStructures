@@ -19,9 +19,16 @@ public class Question4_1 {
         int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         TreeNode root2 = TreeNode.createBST(array);
 
-        root2.insert(27);
-        root2.insert(4);
-
+        /*
+            Tree is unbalanced if the height of two subtrees
+            of the SAME node differ by more than 1.
+         */
+        //root2.insert(25);     //Right side unbalance/balance.
+        //root2.insert(9);
+                                //Left side unbalance/balance.
+        root2.insert(4); // Insert 4 unbalances node3
+        root2.insert(3); // Add 3 to balance node 3.
+        
         TreeNode.print2D(root);
         System.out.println(balancedTree(root));
 
@@ -45,12 +52,12 @@ public class Question4_1 {
             return -1;
         }
 
-        int heightDelta = rightHeight - leftHeight;
+        int heightDelta = leftHeight - rightHeight;
         if (Math.abs(heightDelta) > 1) {
             return -1;
         }
         else {
-            return Math.max(rightHeight, leftHeight) + 1;
+            return Math.max(leftHeight, rightHeight) + 1; // +1 to account for root node.
         }
     }
 
