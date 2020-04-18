@@ -1,3 +1,4 @@
+package Questions;
 import java.util.LinkedList;
 
 /*
@@ -5,6 +6,7 @@ import java.util.LinkedList;
     is a route between two nodes.
  */
 public class Question4_2 {
+
     public enum State {
         Unvisited, Visiting, Visited;
     }
@@ -29,7 +31,7 @@ public class Question4_2 {
         g.vertices[3] = new GraphNode("d", 1);
         g.vertices[4] = new GraphNode("e", 1);
 
-        //Only 0, 3, and 4 have adjacent nodes.
+        // Only 0, 3, and 4 have adjacent nodes.
         g.vertices[0].addAdjacent(g.vertices[1]);
         g.vertices[0].addAdjacent(g.vertices[2]);
         g.vertices[3].addAdjacent(g.vertices[4]);
@@ -90,14 +92,14 @@ class Graph {
             vertices[count] = x;
             count++;
         } else {
-            System.out.print("Graph full");
+            System.out.print("Questions.Graph full");
         }
     }
 }
 
 class GraphNode {
     /*
-        The Graph instance will be made in the main.
+        The Questions.Graph instance will be made in the main.
         adjacent: array to hold number of adjacent nodes
         adjacentCount: simple int to hold the count.
      */

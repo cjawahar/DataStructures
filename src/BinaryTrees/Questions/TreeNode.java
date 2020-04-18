@@ -1,3 +1,5 @@
+package Questions;
+
 public class TreeNode {
     public int data;
     public TreeNode left;
@@ -14,7 +16,7 @@ public class TreeNode {
         return createBST(array, 0, array.length - 1);
     }
 
-    private static TreeNode createBST(int[] array, int start, int end) {
+    public static TreeNode createBST(int[] array, int start, int end) {
 
         if (end < start) {
             return null;
@@ -33,14 +35,14 @@ public class TreeNode {
     public void insert(int value) {
         if (value <= data) {
             if (left == null) {
-                //left = new TreeNode(value);
+                //left = new Questions.TreeNode(value);
                 setLeftChild(new TreeNode(value));
             } else {
                 left.insert(value);
             }
         } else {
             if (right == null) {
-                //right = new TreeNode(value);
+                //right = new Questions.TreeNode(value);
                 setRightChild(new TreeNode(value));
             } else {
                 right.insert(value);
