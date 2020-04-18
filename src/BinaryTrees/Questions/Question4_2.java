@@ -14,32 +14,33 @@ public class Question4_2 {
     public static void main(String[] args) {
         Graph graph = createNewGraph();
         GraphNode[] n = graph.getNodes();
+        for (int i = 0; i < n.length; i++) {
+            System.out.println(n[i]);
+        }
 
-        // Pick two nodes here and determine if there is a route between them.
-        GraphNode start = n[3];
-        GraphNode end = n[4];
-
-        System.out.println(routeAvailable(graph, start, end));
+        // Pick two nodes and determine if there is a route between them.
+        for (int i = 0; i < n.length; i++) {
+            for (int j = 0; j < n.length; j++) {
+                System.out.printf("%s to %s: %b\n", n[i].getName(), n[j].getName(), routeAvailable(graph, n[i], n[j]));
+            }
+        }
     }
 
     public static Graph createNewGraph() {
-        Graph g = new Graph();
+        Graph g = new Graph(5);
 
-        g.vertices[0] = new GraphNode("a", 2);
-        g.vertices[1] = new GraphNode("b", 0);
-        g.vertices[2] = new GraphNode("c", 0);
-        g.vertices[3] = new GraphNode("d", 1);
-        g.vertices[4] = new GraphNode("e", 1);
+        GraphNode sfo = g.addNode("SFO");
+        GraphNode sjc = g.addNode("SJC");
+        GraphNode oak = g.addNode("OAK");
+        GraphNode lax = g.addNode("LAX");
+        GraphNode sdg = g.addNode("SDG");
 
-        // Only 0, 3, and 4 have adjacent nodes.
-        g.vertices[0].addAdjacent(g.vertices[1]);
-        g.vertices[0].addAdjacent(g.vertices[2]);
-        g.vertices[3].addAdjacent(g.vertices[4]);
-        g.vertices[4].addAdjacent(g.vertices[3]);
+        // Only sfo, lax, and sdg have adjacent nodes.
+        sfo.addAdjacent(sjc);
+        sfo.addAdjacent(oak);
+        lax.addAdjacent(sdg);
+        sdg.addAdjacent(lax);
 
-        for (int i = 0; i < 5; i++) {
-            g.addNode(g.vertices[i]);
-        }
         return g;
     }
 
@@ -58,6 +59,9 @@ public class Question4_2 {
             iter = list.removeFirst();
             if (iter != null) {
                 for (GraphNode i : iter.getAdjacent()) {
+                    if (i == null) {
+                        break;
+                    }
                     if (i.state == State.Unvisited) {
                         if (i == end) {
                             return true;
@@ -75,11 +79,13 @@ public class Question4_2 {
 }
 
 class Graph {
-    public GraphNode vertices[];
-    public int count;
+    private GraphNode vertices[];
+    private int count;
+    private int size;
 
-    public Graph() {
-        vertices = new GraphNode[5];
+    public Graph(int size) {
+        this.size = size;
+        vertices = new GraphNode[size];
         count = 0;
     }
 
@@ -87,15 +93,16 @@ class Graph {
         return vertices;
     }
 
-    public void addNode(GraphNode x) {
-        if (count < 10) {
-            vertices[count] = x;
-            count++;
+    public GraphNode addNode(String name) {
+        if (count < size) {
+            return vertices[count++] = new GraphNode(name);
         } else {
             System.out.print("Questions.Graph full");
+            return null;
         }
     }
 }
+
 
 class GraphNode {
     /*
@@ -107,20 +114,22 @@ class GraphNode {
     public int adjacentCount;
     private String name;
     public Question4_2.State state;
+    final int MAX_ADJ = 10;
+     
 
     //Method to add nodes
-    public GraphNode(String name, int adjacentLength) {
+    public GraphNode(String name) {
         this.name = name;
         adjacentCount = 0;
         // use length to set length of adjacent array.
         // need to fill out which nodes are adjacent still
-        adjacent = new GraphNode[adjacentLength];
+        adjacent = new GraphNode[MAX_ADJ];
     }
 
     public void addAdjacent(GraphNode x) {
         // count starts at 0
         // add adjacent graphNodes to array starting at index 0.
-        if (adjacentCount < 10) {
+        if (adjacentCount < MAX_ADJ) {
             this.adjacent[adjacentCount] = x;
             adjacentCount++;
         } else {
@@ -130,5 +139,12 @@ class GraphNode {
 
     public GraphNode[] getAdjacent() {
         return adjacent;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public String toString() {
+        return name + " with " + adjacentCount + " adj";
     }
 }
