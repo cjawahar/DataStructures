@@ -1,5 +1,6 @@
 package Questions;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /*
     Given a directed graph, design an algorithm to find out if there
@@ -14,14 +15,17 @@ public class Question4_2 {
     public static void main(String[] args) {
         Graph graph = createNewGraph();
         GraphNode[] n = graph.getNodes();
-        for (int i = 0; i < n.length; i++) {
-            System.out.println(n[i]);
+        for (GraphNode graphNode : n) {
+            // For clarity, sout calls the overwritten toString method in this file.
+            System.out.println(graphNode);
         }
 
         // Pick two nodes and determine if there is a route between them.
         for (int i = 0; i < n.length; i++) {
             for (int j = 0; j < n.length; j++) {
-                System.out.printf("%s to %s: %b\n", n[i].getName(), n[j].getName(), routeAvailable(graph, n[i], n[j]));
+                System.out.println("=============================================");
+                System.out.printf("%s to %s: %b\n", n[i].getName(), n[j].getName(), routeAvailableBreadth(graph, n[i], n[j]));
+                System.out.printf("%s to %s: %b\n", n[i].getName(), n[j].getName(), routeAvailableDepth(graph, n[i], n[j]));
             }
         }
     }
@@ -44,8 +48,28 @@ public class Question4_2 {
         return g;
     }
 
-    public static boolean routeAvailable(Graph g, GraphNode start, GraphNode end) {
-        LinkedList<GraphNode> list = new LinkedList<>();
+    // Depth-First Search
+    public static boolean routeAvailableDepth(Graph g, GraphNode start, GraphNode end) {
+        for (GraphNode i : start.getAdjacent()) {
+            if (i == null) {
+                break;
+            }
+            if (i == end) {
+                return true;
+            }
+            if (i.state != State.Visited) {
+                routeAvailableDepth(g, i, end);
+            }
+//            else {
+//                routeAvailableDepth(g, i, end);
+//            }
+        }
+        return false;
+    }
+
+    // Breadth-First Search
+    public static boolean routeAvailableBreadth(Graph g, GraphNode start, GraphNode end) {
+        LinkedList<GraphNode> list = new LinkedList<>(); // Operates as a queue for BFS
 
         for (GraphNode node : g.getNodes()) {
             node.state = State.Unvisited;
@@ -79,7 +103,7 @@ public class Question4_2 {
 }
 
 class Graph {
-    private GraphNode vertices[];
+    private GraphNode[] vertices;
     private int count;
     private int size;
 
@@ -108,14 +132,13 @@ class GraphNode {
     /*
         The Questions.Graph instance will be made in the main.
         adjacent: array to hold number of adjacent nodes
-        adjacentCount: simple int to hold the count.
      */
-    private GraphNode adjacent[];
+    private GraphNode[] adjacent;
     public int adjacentCount;
     private String name;
     public Question4_2.State state;
     final int MAX_ADJ = 10;
-     
+
 
     //Method to add nodes
     public GraphNode(String name) {
@@ -140,6 +163,7 @@ class GraphNode {
     public GraphNode[] getAdjacent() {
         return adjacent;
     }
+
     public String getName() {
         return name;
     }
