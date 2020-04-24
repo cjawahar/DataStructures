@@ -1,6 +1,5 @@
-package Questions;
+package Questions.Chapter4;
 import java.util.LinkedList;
-import java.util.Stack;
 
 /*
     Given a directed graph, design an algorithm to find out if there
@@ -121,7 +120,7 @@ class Graph {
         if (count < size) {
             return vertices[count++] = new GraphNode(name);
         } else {
-            System.out.print("Questions.Graph full");
+            System.out.print("Questions.Chapter4.Graph full");
             return null;
         }
     }
@@ -130,7 +129,7 @@ class Graph {
 
 class GraphNode {
     /*
-        The Questions.Graph instance will be made in the main.
+        The Questions.Chapter4.Graph instance will be made in the main.
         adjacent: array to hold number of adjacent nodes
      */
     private GraphNode[] adjacent;

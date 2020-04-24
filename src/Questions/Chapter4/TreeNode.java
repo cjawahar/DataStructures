@@ -1,4 +1,4 @@
-package Questions;
+package Questions.Chapter4;
 
 public class TreeNode {
     public int data;
@@ -35,14 +35,14 @@ public class TreeNode {
     public void insert(int value) {
         if (value <= data) {
             if (left == null) {
-                //left = new Questions.TreeNode(value);
+                //left = new Questions.Chapter4.TreeNode(value);
                 setLeftChild(new TreeNode(value));
             } else {
                 left.insert(value);
             }
         } else {
             if (right == null) {
-                //right = new Questions.TreeNode(value);
+                //right = new Questions.Chapter4.TreeNode(value);
                 setRightChild(new TreeNode(value));
             } else {
                 right.insert(value);
@@ -71,8 +71,9 @@ public class TreeNode {
     static void print2DUtil(TreeNode root, int space)
     {
         // Base case
-        if (root == null)
+        if (root == null) {
             return;
+        }
 
         // Increase distance between levels
         space += COUNT;
@@ -86,6 +87,12 @@ public class TreeNode {
         for (int i = COUNT; i < space; i++)
             System.out.print(" ");
         System.out.print(root.data + "\n");
+        if (root.left == null) {
+            System.out.print("\n");
+            for (int i = COUNT; i < space; i++)
+                System.out.print(" ");
+            System.out.println("()");
+        }
 
         // Process left child
         print2DUtil(root.left, space);

@@ -1,4 +1,4 @@
-package Questions;
+package Questions.Chapter4;
 /*
     Implement a function to check if a binary tree is a BST
  */

@@ -1,4 +1,4 @@
-package Questions;
+package Questions.Chapter4;
 
 /*
     Implement a function to check if a binary tree is balanced.
@@ -31,7 +31,7 @@ public class Question4_1 {
         root2.insert(4); // Insert 4 unbalances node3
         root2.insert(3); // Add 3 to balance node 3.
 
-        TreeNode.print2D(root);
+        //TreeNode.print2D(root);
         System.out.println(balancedTree(root));
 
         TreeNode.print2D(root2);
