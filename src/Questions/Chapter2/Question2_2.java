@@ -1,6 +1,7 @@
 package Questions.Chapter2;
 
 import LinkedLists.LinkedListNode;
+import LinkedLists.randomLinkedList;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -14,7 +15,8 @@ public class Question2_2 {
     public static void main(String[] args) {
         int[] input = getProgramInputs();
         // Min, Max are changeable but not asked for in getProgramInputs.
-        LinkedListNode list = randomLinkedList(input[0], 5, 25);
+        randomLinkedList rand = new randomLinkedList();
+        LinkedListNode list = rand.createRandomLinkedList(input[0], 5, 25);
         LinkedListNode returnNode = find_K_ele(list, input[1]);
 
         System.out.println("Original LL: " + list.printForward());
@@ -41,25 +43,6 @@ public class Question2_2 {
             iter2 = iter2.next;
         }
         return iter1;
-    }
-
-    public static LinkedListNode randomLinkedList(int N, int min, int max) {
-        LinkedListNode root = new LinkedListNode(getRandomNumberInRange(min, max), null, null);
-        LinkedListNode prev = root;
-        for (int i = 1; i < N; i++) {
-            int data = getRandomNumberInRange(min, max);
-            LinkedListNode next = new LinkedListNode(data, null, null);
-            prev.setNext(next);
-            prev = next;
-        }
-        return root;
-    }
-
-    private static int getRandomNumberInRange(int min, int max) {
-        if (min >= max) {
-            throw new IllegalArgumentException("Max must be greater than Min");
-        }
-        return (int)(Math.random() * ((max - min) + 1)) + min;
     }
 
     private static int[] getProgramInputs() {
