@@ -1,6 +1,6 @@
 package Questions.Chapter2;
 
-import LinkedLists.LinkedListNode;
+import LinkedLists.LLNode;
 import LinkedLists.randomLinkedList;
 
 import java.util.InputMismatchException;
@@ -16,8 +16,8 @@ public class Question2_2 {
         int[] input = getProgramInputs();
         // Min, Max are changeable but not asked for in getProgramInputs.
         randomLinkedList rand = new randomLinkedList();
-        LinkedListNode list = rand.createRandomLinkedList(input[0], 5, 25);
-        LinkedListNode returnNode = find_K_ele(list, input[1]);
+        LLNode list = rand.createRandomLinkedList(input[0], 5, 25);
+        LLNode returnNode = find_K_ele(list, input[1]);
 
         System.out.println("Original LL: " + list.printForward());
         if (returnNode == null) {
@@ -26,9 +26,9 @@ public class Question2_2 {
         System.out.println(input[1] + "th to last node is: " + returnNode.data);
     }
 
-    public static LinkedListNode find_K_ele(LinkedListNode input, int k) {
-        LinkedListNode iter1 = input;
-        LinkedListNode iter2 = input;
+    public static LLNode find_K_ele(LLNode input, int k) {
+        LLNode iter1 = input;
+        LLNode iter2 = input;
         if (k <= 0) return null;
         // Initial loop to move iter2 ahead by k nodes.
         for (int i = 0; i < k; i++) {

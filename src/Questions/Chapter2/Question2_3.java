@@ -1,6 +1,6 @@
 package Questions.Chapter2;
 
-import LinkedLists.LinkedListNode;
+import LinkedLists.LLNode;
 import LinkedLists.randomLinkedList;
 /*
     Implement an algorithm to delete a node in the middle of a singly
@@ -12,7 +12,7 @@ import LinkedLists.randomLinkedList;
 public class Question2_3 {
     public static void main(String[] args) throws Exception {
         randomLinkedList rand = new randomLinkedList();
-        LinkedListNode randomList = rand.createRandomLinkedList(10, 10, 20);
+        LLNode randomList = rand.createRandomLinkedList(10, 10, 20);
 
         System.out.println(randomList.printForward());
         // Not the same implementation, randomList of size 10
@@ -21,12 +21,12 @@ public class Question2_3 {
         System.out.println(randomList.printForward());
     }
     // Won't work if a nextNode doesn't exist, i.e input is the last node in the list.
-    public static void deleteNode(LinkedListNode input) throws Exception {
+    public static void deleteNode(LLNode input) throws Exception {
         if (input == null || input.next == null) {
             throw new Exception("Input was null or next node doesn't exist.");
         }
         // Set nextNode to be input's nextNode.
-        LinkedListNode nextNode = input.next;
+        LLNode nextNode = input.next;
         // Copy data from nextNode to the input node
         // Then delete nextNode by reassigning next.
         // The input node's data/next is overwritten with the nextNode.

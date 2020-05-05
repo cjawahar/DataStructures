@@ -1,20 +1,20 @@
 package LinkedLists;
 
-public class LinkedListNode {
+public class LLNode {
     public int data;
-    public LinkedListNode next;
-    public LinkedListNode prev;
-    public LinkedListNode last;
+    public LLNode next;
+    public LLNode prev;
+    public LLNode last;
 
-    public LinkedListNode() {};
+    public LLNode() {};
 
-    public LinkedListNode(int d, LinkedListNode next, LinkedListNode prev) {
+    public LLNode(int d, LLNode next, LLNode prev) {
         setNext(next);
         setPrevious(prev);
         data = d;
     }
 
-    public void setNext(LinkedListNode n) {
+    public void setNext(LLNode n) {
         next = n;
         if (this == last) {
             last = n;
@@ -24,7 +24,7 @@ public class LinkedListNode {
         }
     }
 
-    public void setPrevious(LinkedListNode p) {
+    public void setPrevious(LLNode p) {
         prev = p;
         if (p != null && p.next != this) {
             p.setNext(this);
@@ -39,18 +39,18 @@ public class LinkedListNode {
         }
     }
 
-    public LinkedListNode clone() {
-        LinkedListNode next2 = null;
+    public LLNode clone() {
+        LLNode next2 = null;
         if (next != null) {
             next2 = next.clone();
         }
-        LinkedListNode head2 = new LinkedListNode(data, next2, null);
+        LLNode head2 = new LLNode(data, next2, null);
         return head2;
     }
 
     void appendToTail(int d) {
-        LinkedListNode end = new LinkedListNode();
-        LinkedListNode n = this;
+        LLNode end = new LLNode();
+        LLNode n = this;
 
         while (n.next != null) {
             n = n.next;

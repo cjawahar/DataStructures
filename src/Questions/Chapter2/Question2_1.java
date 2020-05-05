@@ -1,8 +1,8 @@
 package Questions.Chapter2;
 
-import LinkedLists.LinkedListNode;
+import LinkedLists.LLNode;
 import java.util.ArrayList;
-import java.util.HashSet;
+
 /*
     Write code to remove duplicates from an unsorted linked list.
     FOLLOW UP
@@ -11,21 +11,21 @@ import java.util.HashSet;
 public class Question2_1 {
     public static void main(String[] args) {
         //How to make an unsorted linked list?
-        LinkedListNode first = new LinkedListNode(0, null, null);
-        LinkedListNode second = first; // use first/second as temp nodes
+        LLNode first = new LLNode(0, null, null);
+        LLNode second = first; // use first/second as temp nodes
 
-        LinkedListNode head = first; // Actual head of LL
+        LLNode head = first; // Actual head of LL
 
         for (int i = 1; i < 6; i++) {
             // Data will be only 0 or 1.
-            second = new LinkedListNode(i % 2, null, null);
+            second = new LLNode(i % 2, null, null);
             first.setNext(second);
             second.setPrevious(first);
             // second currently doesn't have a next node, added next iteration.
             first = second;
         }
 
-        LinkedListNode clone = head.clone();
+        LLNode clone = head.clone();
 
         System.out.println("Head LL: " + head.printForward());
         deleteDuplicates(head);
@@ -38,13 +38,13 @@ public class Question2_1 {
 
     // Sets only accept unique values -- use that to parse the linkedlist.
     // LinkedListNode contains, next, previous
-    public static void deleteDuplicates(LinkedListNode input) {
+    public static void deleteDuplicates(LLNode input) {
         if (input == null) return;
 
         //HashSet<Integer> set = new HashSet<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
 
-        LinkedListNode tempPrev = null;
+        LLNode tempPrev = null;
         while (input != null) {
              /*
                 Well...we aren't adding every iter, checking with .contains
@@ -67,12 +67,12 @@ public class Question2_1 {
     }
 
     // Can't use buffer to store values
-    public static void noBufferDelete(LinkedListNode input) {
+    public static void noBufferDelete(LLNode input) {
         if (input == null) return;
-        LinkedListNode current = input;
+        LLNode current = input;
 
         while (current != null) {
-            LinkedListNode iter = current;
+            LLNode iter = current;
             // 1 by 1 checking.
             while (iter.next != null) {
                 // Delete by updating iter's to skip the next node.

@@ -1,6 +1,6 @@
 package Questions.Chapter2;
 
-import LinkedLists.LinkedListNode;
+import LinkedLists.LLNode;
 import LinkedLists.randomLinkedList;
 
 import java.util.ArrayList;
@@ -16,9 +16,9 @@ public class Question2_4 {
         randomLinkedList rand = new randomLinkedList();
         ArrayList<Integer> inputs = getInputs();
 
-        LinkedListNode list = rand.createRandomLinkedList(inputs.get(0), inputs.get(1), inputs.get(2));
+        LLNode list = rand.createRandomLinkedList(inputs.get(0), inputs.get(1), inputs.get(2));
         System.out.println(list.printForward());
-        LinkedListNode returnList = partitionList(list, inputs.get(3));
+        LLNode returnList = partitionList(list, inputs.get(3));
         System.out.println(returnList.printForward());
     }
     /*
@@ -41,13 +41,13 @@ public class Question2_4 {
         Final:    15->7->12->11->25->25
      */
     // Order not required just < than and > than.
-    public static LinkedListNode partitionList(LinkedListNode inputList, int partition) {
-        LinkedListNode newHead = inputList;
-        LinkedListNode newTail = inputList;
+    public static LLNode partitionList(LLNode inputList, int partition) {
+        LLNode newHead = inputList;
+        LLNode newTail = inputList;
 
         // Start at beginning
         while (inputList != null) {
-            LinkedListNode nextNode = inputList.next;
+            LLNode nextNode = inputList.next;
             // Adding to tail here
             if (inputList.data > partition) {
                 newTail.next = inputList;
