@@ -16,6 +16,8 @@ public class LLNode {
 
     public void setNext(LLNode n) {
         next = n;
+        // this refers to the node previous to the input node n.
+        // I.E the head node if first in line.
         if (this == last) {
             last = n;
         }

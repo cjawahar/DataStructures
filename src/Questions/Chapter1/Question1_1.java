@@ -2,7 +2,6 @@ package Questions.Chapter1;
 /*
     Implement an algorithm to determine if a string has all unique characters.
  */
-
 public class Question1_1 {
     // Is this an ASCII or Unicode string? It would matter.
     public static void main(String[] args) {

@@ -1,8 +1,8 @@
 package Questions.Chapter2;
 
 import LinkedLists.LLNode;
+import LinkedLists.randomLinkedList;
 import java.util.ArrayList;
-
 /*
     Write code to remove duplicates from an unsorted linked list.
     FOLLOW UP
@@ -24,6 +24,10 @@ public class Question2_1 {
             // second currently doesn't have a next node, added next iteration.
             first = second;
         }
+//        // Second way to create an unsorted linked list with duplicates.
+//        randomLinkedList random = new randomLinkedList();
+//        LLNode head2 = random.createRandomLinkedList(6, 0,1);
+//        System.out.println(head2.printForward());
 
         LLNode clone = head.clone();
 

@@ -1,5 +1,9 @@
 package Questions.Chapter1;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 /*
     Given two strings, write a method to decide if one
     is a permutation of the other.
@@ -30,7 +34,15 @@ public class Question1_3 {
         }
         String sortedS = sort(s);
         String sortedT = sort(t);
-        //return sort(s).equals(sort(t));  //Debugging purposes.
+
+        // You can do this as well
+        // Lists use Collections.sort(), Arrays use Arrays.sort()
+//        List<String> listS = Arrays.asList(s.split(""));
+//        List<String> listT = Arrays.asList(t.split(""));
+//        Collections.sort(listS);
+//        Collections.sort(listT);
+//        return listS.equals(listT);
+
         return sortedS.equals(sortedT);
     }
 

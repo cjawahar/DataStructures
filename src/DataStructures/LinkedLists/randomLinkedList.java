@@ -36,6 +36,7 @@ public class randomLinkedList {
 
             We don’t want decimal numbers though, we want whole numbers.
             Math.floor() just chops off the decimal. 3.14159 becomes 3.
+            (int) will do the same as Math.floor
             That’s where we get Math.floor(Math.random() * (max - min + 1)).
 
             Now we’re getting a number from 0 to whatever our range size was.

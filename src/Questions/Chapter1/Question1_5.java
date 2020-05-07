@@ -27,9 +27,9 @@ public class Question1_5 {
                 // Since we are replacing aa with a2, we need to get the length of the 'size' var.
                 // This will either be 1 for counts of 0-9, 2 for 10 - 99 and so forth.
                 // Don't directly add the count itself to the size, defeats the purpose.
-                // The initial one is for the initial letter itself.
-                size += 1 + String.valueOf(count).length();
-                count = 1; // Reset count to 1.
+                // The initial +1 is for the initial letter itself.
+                size += 1 + Integer.toString(count).length(); // String.valueOf(count).length() as well.
+                count = 1; // Reset count to 1 for next letter in inputStr.
             }
         }
         //One final addition to account for very last letter as for loop hits the end.
@@ -42,7 +42,7 @@ public class Question1_5 {
         if (size == 0 || size >= input.length()) return input;  // Stipulated in the problem
 
         // SAME process now, start with first letter of input string.
-        StringBuffer newString = new StringBuffer();
+        StringBuilder newString = new StringBuilder();
         char lastLetter = input.charAt(0);
         int count = 1; // Same idea as the count in countDuplicates.
 
