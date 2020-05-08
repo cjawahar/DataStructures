@@ -25,14 +25,16 @@ public class Question4_1 {
             Tree is unbalanced if the height of two subtrees
             of the SAME node differ by more than 1.
          */
-        //root2.insert(25);     //Right side unbalance/balance.
+        root2.insert(25);     //Right side unbalance/balance.
         //root2.insert(9);
                                 //Left side unbalance/balance.
         root2.insert(4); // Insert 4 unbalances node3
         root2.insert(3); // Add 3 to balance node 3.
 
-        //TreeNode.print2D(root);
+        TreeNode.print2D(root);
         System.out.println(balancedTree(root));
+
+        System.out.println("================================================");
 
         TreeNode.print2D(root2);
         System.out.println(balancedTree(root2));
@@ -64,6 +66,6 @@ public class Question4_1 {
     }
 
     public static boolean balancedTree(TreeNode inputTree) {
-        return checkTreeHeight(inputTree) != -1;
+        return (checkTreeHeight(inputTree) != -1 && checkTreeHeight(inputTree) != 0);
     }
 }

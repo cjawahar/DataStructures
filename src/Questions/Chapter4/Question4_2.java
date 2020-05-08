@@ -16,7 +16,8 @@ public class Question4_2 {
         GraphNode[] n = graph.getNodes();
         for (GraphNode graphNode : n) {
             // For clarity, sout calls the overwritten toString method in this file.
-            System.out.println(graphNode);
+            //System.out.println(graphNode);
+            graphNode.printOut();
         }
 
         // Pick two nodes and determine if there is a route between them.
@@ -102,6 +103,7 @@ public class Question4_2 {
 }
 
 class Graph {
+    // vertices refer to the nodes in the graph.
     private GraphNode[] vertices;
     private int count;
     private int size;
@@ -169,5 +171,9 @@ class GraphNode {
 
     public String toString() {
         return name + " with " + adjacentCount + " adj";
+    }
+
+    public void printOut() {
+        System.out.println(name + " with " + adjacentCount + " adj");
     }
 }

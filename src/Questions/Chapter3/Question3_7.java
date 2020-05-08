@@ -3,6 +3,9 @@ package Questions.Chapter3;
 import java.util.LinkedList;
 
 /*
+    Animal shelter holds only dogs/cats, operates on "first in, first out".
+    People must adopt either the oldest animal at the shelter or oldest of
+    either dog or cat. Can't select specific animal.
     Implement generic enqueue, dequeueAny, dequeueDog, dequeueCat
     Use LinkedList.
  */

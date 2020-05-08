@@ -1,5 +1,7 @@
 package Questions.Chapter4;
 
+import java.util.Arrays;
+
 public class TreeNode {
     public int data;
     public TreeNode left;
@@ -13,6 +15,7 @@ public class TreeNode {
     }
 
     public static TreeNode createBST(int[] array) {
+        Arrays.sort(array);
         return createBST(array, 0, array.length - 1);
     }
 
@@ -29,6 +32,20 @@ public class TreeNode {
         n.setRightChild(createBST(array, middle + 1, end));
 
         return n;
+    }
+
+    private void setLeftChild(TreeNode left) {
+        this.left = left;
+        if (left != null) {
+            left.parent = this;
+        }
+    }
+
+    private void setRightChild(TreeNode right) {
+        this.right = right;
+        if (right != null) {
+            right.parent = this;
+        }
     }
 
     // This method will ensure the value is added in order to the BST.
@@ -49,20 +66,6 @@ public class TreeNode {
             }
         }
         size++;
-    }
-
-    private void setLeftChild(TreeNode left) {
-        this.left = left;
-        if (left != null) {
-            left.parent = this;
-        }
-    }
-
-    private void setRightChild(TreeNode right) {
-        this.right = right;
-        if (right != null) {
-            right.parent = this;
-        }
     }
 
     // Print 2D Tree ===============================================

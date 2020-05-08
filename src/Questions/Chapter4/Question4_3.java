@@ -1,5 +1,9 @@
 package Questions.Chapter4;
 
+/*
+    Given a sorted (increasing order) array, write an algorithm to
+    create a binary search tree with minimal height.
+ */
 public class Question4_3 {
 
     public static void main(String[] args) {
@@ -14,7 +18,6 @@ public class Question4_3 {
         // input array. Which ensures both left/right sides are not unbalanced.
         // This means the height will be minimized -- no overly long left/right sides.
         TreeNode root = TreeNode.createBST(array);
-
         TreeNode.print2D(root);
     }
 }

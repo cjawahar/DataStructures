@@ -1,5 +1,6 @@
 package Questions.Chapter4;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /*
@@ -15,6 +16,14 @@ public class Question4_4 {
         TreeNode.print2D(tree);
 
         ArrayList<LinkedList<TreeNode>> list = createSameDepthLinkedList(tree);
+
+        for (LinkedList<TreeNode> treeNodes : list) {
+            for (TreeNode node : treeNodes) {
+                System.out.print(node.data);
+                System.out.print(" ");
+            }
+            System.out.println("");
+        }
     }
 
     public static ArrayList<LinkedList<TreeNode>> createSameDepthLinkedList(TreeNode inputTree) {
@@ -25,7 +34,11 @@ public class Question4_4 {
         if (inputTree != null) {
             iterator.add(inputTree);
         }
-
+       /*
+        Iterator is being used to store each level's nodes, but we are adding to our holder structure
+        at the list.add() call. We would then clear the iterator and then add the current levels nodes,
+        so the while loop continues until level.left and level.right are null. (Bottom of the tree).
+        */
         while (iterator.size() > 0) {
             // First iteration = first level -- contains all child nodes.
             // 2nd iteration of loop -- adds to list.

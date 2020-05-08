@@ -5,17 +5,18 @@ package Questions.Chapter4;
 public class Question4_5 {
 
     public static void main(String[] args) {
-        int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        //int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] array = {6, 7, 8, 9, 10, 5, 0, 1, 2, 3, 4};
 
         TreeNode tree = TreeNode.createBST(array);
-        //TreeNode.print2D(tree);
+        TreeNode.print2D(tree);
 
         boolean isBST = checkIfBST(tree);
         System.out.println(isBST);
     }
 
     // Need to place static var outside - or breaks recursive loop, reassigned to null.
-    static Integer initialVal = null;
+    static Integer initialVal = Integer.MIN_VALUE;
     public static boolean checkIfBST(TreeNode tree) {
         if (tree == null) {
             return true;
@@ -30,7 +31,7 @@ public class Question4_5 {
         }
         initialVal = tree.data;
 
-        if (!checkIfBST(tree.right)){
+        if (!checkIfBST(tree.right)) {
             return false;
         }
         return true;
